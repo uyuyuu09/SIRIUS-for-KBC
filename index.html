@@ -323,8 +323,11 @@
     showBook(res.kita_colle_book_DB);
     showMem(res.mem_DB);
     showDantai(res.vertically_DB);
-    updateElementText('user_name', res.user_name + ' さんとして正常にログインされています。')
-    updateElementText('shift', 'シフトグループ: ' + res.shift)
+    updateElementText('user_name', res.user_name + ' さんとして正常にログインされています。');
+    updateElementText('shift', 'シフトグループ: ' + res.shift);
+    updateElementText('doneCount', res.kitakou_collection_now.done);
+    updateElementText('unscheduledCount', res.kitakou_collection_now.unscheduled);
+    updateElementText('waitingCount', res.kitakou_collection_now.waiting);
 
     const talkClockElement = document.getElementById('talkClock');
     const currentTime = new Date();
@@ -458,12 +461,6 @@
   function updateElementText(elementId, text) {
     document.getElementById(elementId).textContent = text;
   }
-
-  google.script.run.withSuccessHandler(countData => {
-    updateElementText('doneCount', countData.done);
-    updateElementText('unscheduledCount', countData.unscheduled);
-    updateElementText('waitingCount', countData.waiting);
-  }).getData('kitakou_collection_now');
 
   function showData(kitakou_collection_db) {
     var table = '<table class="table table_fixed has-text-centered is-centered is-fullwidth is-hoverable is-bordered is-size-7"><tr><th class="sticky-col has-text-centered" style="min-width: 70px">コード</th><th class="has-text-centered" style="min-width: 110px">氏名</th><th class="has-text-centered" style="min-width: 130px"></th><th class="has-text-centered" style="min-width: 70px">教科</th><th class="has-text-centered" style="min-width: 100px">ステータス</th><th class="has-text-centered" style="min-width: 130px">担当部・同好会</th><th class="has-text-centered" style="min-width: 90px">撮影担当</th><th class="has-text-centered" style="min-width: 100px">撮影日時</th><th class="has-text-centered" style="min-width: 100px">概要</th><th class="has-text-centered" style="min-width: 120px">撮影場所</th></tr>';
