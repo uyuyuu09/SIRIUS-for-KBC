@@ -60,5 +60,5 @@ ___
 https://script.google.com/a/macros/oks.city-saitama.ed.jp/s/AKfycbzgu85a2oJgZxC8J5CGWDjrTEHlu85w9dcXnJ19tkgHEGfQyFKlnNhlP-IjG_Acf0dC/exec
 
 SIRIUS for KBC v4.2.0  
-author name: uyuyuu09
+author name: uyuyuu09  
 author email: uyuyu.0301@gmail.com
