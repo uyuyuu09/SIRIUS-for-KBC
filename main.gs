@@ -1,4 +1,4 @@
-const WEBHOOK_URL = "";
+const WEBHOOK_URL = "https://chat.googleapis.com/v1/spaces/AAAAKSvIxWQ/messages?key=AIzaSyDdI0hCZtE6vySjMm-WEfRq3CPzqKqqsHI&token=y9H49UBd_UxiTTetvmMNrKdr2abEah1DPhkQXvg1Zpg";
 
 function findRow(sheet, val, col) {
   var dat = sheet.getDataRange().getValues();
@@ -34,7 +34,7 @@ function doGet(e) {
   var LOGIN_USER = Session.getActiveUser().getEmail();
   try {
     var user_name = member.getRange(findRow(member, LOGIN_USER, 3), 2).getValue();
-    var department = member.getRange(findRow(member, LOGIN_USER, 3), 5).getValue();
+    var department = member.getRange(findRow(member, LOGIN_USER, 3), 6).getValue();
   } catch {
     var user_name = "unknown";
     var department = "unknown";
@@ -327,6 +327,7 @@ function updateKitakoreSheet(row, col, newValue) {
 }
 
 function setKitakoreBook() {
+  // 「北コレ撮影アポ取り状況確認」ページに入力すると実行されるからGAS editorから操作する必要はなし
   const ss = SpreadsheetApp.getActiveSpreadsheet();
   const kitakoreSheet = ss.getSheetByName("北高コレクション");
   const kitakoreBookSheet = ss.getSheetByName("北コレ予約");
@@ -340,8 +341,12 @@ function setKitakoreBook() {
       for (let k = 0; k < dataArray.length; k++) {
         for (let l = 0; l < sheetData.length; l++) {
           if (sheetData[l][0] === dataArray[k]) {
+            // sheetData[l][n]のnは「北高コレクション」シートの各列n(n=0,1,2,3,...)に対応してる。
+            // 例).予約シートに入力するのを「氏名」にしたかったら、n=1にする
+            // k,lはただのカウント変数だからいじらなくて大丈夫
             let dateCell = kitakoreBookSheet.getRange(i + 1, 1);
             let topCell = kitakoreBookSheet.getRange(1, j + 1);
+            console.log(dateCell.getValue() + '\n' + topCell.getValue())
 
             kitakoreSheet.getRange(l + 1, 8).setValue(dateCell.getValue() + '\n' + topCell.getValue());
           }
