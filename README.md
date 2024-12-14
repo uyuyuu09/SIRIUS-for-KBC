@@ -66,6 +66,6 @@ SIRIUSにアクセスするためには、学校から配布されているGoogl
 
 >https://script.google.com/a/macros/oks.city-saitama.ed.jp/s/AKfycbzgu85a2oJgZxC8J5CGWDjrTEHlu85w9dcXnJ19tkgHEGfQyFKlnNhlP-IjG_Acf0dC/exec
 
-SIRIUS for KBC v4.3.0 
+SIRIUS for KBC v4.3.0  
 Author name: uyuyuu09  
 Author email: uyuyu.0301@gmail.com
